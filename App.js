@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
+import InputBar from './components/InputBar';
 
 export default class App extends React.Component {
   constructor () {
@@ -9,8 +10,8 @@ export default class App extends React.Component {
     this.state = {
       todoInput: '',
       todos: [
-        { id: 0, task: 'Buy grocery', done: false },
-        { id: 1, task: 'Wash dishes', done: true },
+        { id: 0, title: 'Buy grocery', done: false },
+        { id: 1, title: 'Wash dishes', done: true },
       ]
     }
   }
@@ -23,7 +24,9 @@ export default class App extends React.Component {
       <View style={styles.container}>
         {statusbar}
 
-        <Header title="Hello, World!"/>
+        <Header title="To-do App"/>
+
+        <InputBar />
       </View>
     );
   }
