@@ -16,6 +16,23 @@ export default class App extends React.Component {
     }
   }
 
+  addNewTodo () {
+    // console.log(this.state.todoInput);
+    console.log("Test 1")
+    let todos = this.state.todos;
+    
+    todos.unshift({
+      id: todos.length + 1,
+      todo: this.state.todoInput,
+      done: false
+    });
+    
+    this.setState({
+      todos,
+      todoInput: ''
+    });
+    console.log("Test 2")
+  }
 
   render() {
     const statusbar = (Platform.OS == 'ios') ? <View style={styles.statusbar}></View> : <View></View>
@@ -26,7 +43,13 @@ export default class App extends React.Component {
 
         <Header title="To-do App"/>
 
-        <InputBar />
+        <InputBar 
+          textChange={todoInput => this.setState({ todoInput })}
+          addNewTodo={ () => this.addNewTodo() }
+        />
+
+        <Text>{this.state.todoInput}</Text>
+        
       </View>
     );
   }
