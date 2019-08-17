@@ -12,7 +12,7 @@ export default class App extends React.Component {
       todoInput: '',
       todos: [
         { id: 0, title: 'Buy grocery', done: false },
-        { id: 1, title: 'Wash dishes', done: false }
+        { id: 1, title: 'Wash dishes', done: true }
       ]
     }
   }
@@ -24,7 +24,7 @@ export default class App extends React.Component {
     
     todos.unshift({
       id: todos.length + 1,
-      todo: this.state.todoInput,
+      title: this.state.todoInput,
       done: false
     });
     
@@ -48,6 +48,7 @@ export default class App extends React.Component {
         <InputBar 
           textChange={todoInput => this.setState({ todoInput })}
           addNewTodo={ () => this.addNewTodo() }
+          todoInput={this.state.todoInput}
         />
         
         <FlatList 
