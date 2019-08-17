@@ -1,7 +1,8 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from './components/Header';
 import InputBar from './components/InputBar';
+import TodoItem from './components/TodoItem';
 
 export default class App extends React.Component {
   constructor () {
@@ -11,14 +12,14 @@ export default class App extends React.Component {
       todoInput: '',
       todos: [
         { id: 0, title: 'Buy grocery', done: false },
-        { id: 1, title: 'Wash dishes', done: true },
+        { id: 1, title: 'Wash dishes', done: false }
       ]
     }
   }
 
   addNewTodo () {
     // console.log(this.state.todoInput);
-    console.log("Test 1")
+    // console.log("Test 1")
     let todos = this.state.todos;
     
     todos.unshift({
@@ -31,7 +32,8 @@ export default class App extends React.Component {
       todos,
       todoInput: ''
     });
-    console.log("Test 2")
+    // console.log("Test 2")
+    // console.log(this.state)
   }
 
   render() {
@@ -47,9 +49,18 @@ export default class App extends React.Component {
           textChange={todoInput => this.setState({ todoInput })}
           addNewTodo={ () => this.addNewTodo() }
         />
-
-        <Text>{this.state.todoInput}</Text>
         
+        <FlatList 
+          data={this.state.todos}
+          extraData={this.state}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={ ({item, index}) => {
+            return (
+              <TodoItem todoItem={item}/>
+            )
+          }}
+        />
+
       </View>
     );
   }
