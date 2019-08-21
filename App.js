@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
 
   },
   statusbar: {
-    backgroundColor: '#FFCE00',
-    height: 30,
+    backgroundColor: '#aaf0d1',
+    height: 50,
   }
 });
