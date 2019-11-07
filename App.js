@@ -13,6 +13,7 @@ export default class App extends React.Component {
       todos: [
         { id: 0, title: 'Buy grocery', done: false },
         { id: 1, title: 'Wash dishes', done: true }
+        { id: 2, title: 'Take out the trash', done: true }
       ]
     }
   }
